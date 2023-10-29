@@ -1,0 +1,53 @@
+@startuml
+
+
+
+
+Entity Cliente{
+Rut
+Nombre
+Apellido
+Fecha de Nacimiento
+Tipo de Licencia
+}
+
+
+Entity Vehiculo{
+Patente
+Numero de Ruedas
+Tipo de Vehiculo
+Numero de Asiento
+Estado
+}
+
+Entity Arriendo{
+rut Cliente
+patente de vehiculo
+fecha de inicio
+fencha de finalizacion
+}
+
+
+
+
+
+
+Cliente "1" -- "1..*" Arriendo: > Tiene
+
+Arriendo "1" -- "1" Vehiculo: > Contiene
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

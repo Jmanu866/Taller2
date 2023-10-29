@@ -1,0 +1,112 @@
+@startuml
+skin rose
+left to right direction
+
+
+Class Cliente{
+-Rut: String
+-Nombre: String
+-Apellido: String
+-FechaDeNacimiento: String
+-TipoDeLicencia: String
++Cliente(Rut: String, Nombre: String, Apellido: String, Fecha de Nacimiento: String, Tipo de Licencia: String)
++getRut(): String
++getNombre(): String
++getApellido(): String
++getFechaDeNacimiento(): String
++getTipoDeLicencia(): String
+}
+
+Class Arriendo{
+-Patente: String
+-Rut: String
+-FechaDeInicio: String
+-FechaDeFinalizacion: String
++Arriendo(Patente: String, Rut: String, FechaDeInicio: String, FechaDeFinalizacion: String)
++getPatente(): String
++getRut(): String
++getFechaDeInicio(): String
+ +getFechaDeFinalizacion(): String
+}
+
+Class Vehiculo{
+-Patente: String
+-NumeroDeRuedas: Int
+-TipoDeVehiculo: String
+-NumeroDeAsiento: Int
+-Estado: String
++Vehiculo(Patente: String, NumeroDeRuedas: Int, TipoDeVehiculo: String, NumeroDeAsiento: Int, Estado: String )
++getPatente(): String
++getNumeroDeRuedas(): Int
++getTipoDeVehiculo(): String
++getNumeroDeAsiento(): Int
++getEstado(): String
+}
+
+Class Sistemaimpl{
++LeerArchivoVehiculo(): Void
++LeerArchivoCliente(): Void
++LeerArchivoArriendo(): Void
++ImprimirMenu(): Void
++ValidRut(): String
++ValidFecha(): String
++ValidLicencias(): String
++ValidPatente(): String
++ValidInt(): Int
++ValidEstado(): String
++ImprimirVehiculo(List<Vehiculo> Vehiculos): boolean
++imprimirArriendos(List<Arriendo> Arriendos): boolean
++VerificarPatenteEnListaV(List<Vehiculo> ListaV, String patente): String
++VerificarPatenteNOEnListaV(List<Vehiculo> ListaV, String patente): String
++VerificarRutEnListaC(List<Cliente> ListaC, String rut): String
++VerificarRutNoEnListaC(List<Cliente> ListaC, String rut): String
++VerificarFecha(List<Arriendo> ListaA, String patente): String
++VerificarNoRutEnListaA(List<Arriendo> ListaA, String rut): String
++VerificarSiRutEnListaA(List<Arriendo> ListaA, String rut): String
++EliminarDeLaLista(List<Arriendo> ListaA, String rut): Void
++ImprimirMenuEstadisticas() : Void
++vehiculosMasArriendos(List<Arriendo> ListaA, List<Vehiculo> ListaV): Void
++porcentajeDeArriendosNoDevueltos(List<Arriendo> ListaA, List<Vehiculo> ListaV): Void
++cantidadDeArriendoMes(List<Arriendo> ListaA): Void
++cantidadDeVehiculos30D(List<Arriendo> ListaA): Void
++GArchivoVehiculo(): Void
++GArchivoCliente(): Void
++GArchivoArriendos(): Void
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+interface Sistema{
++ Menu(): Void
++ INuevoCliente() : Void
++ ingresarNuevoVehiculo(): Void
++ RArriendo(): Void
++ GDevolucion(): Void
++ DEstadisticas(): Void
+}
+
+
+Sistemaimpl ..|> Sistema : Implementa >
+
+Cliente --* Sistemaimpl : - ListaC : List<Cliente>
+Vehiculo --* Sistemaimpl : - ListaV : List<Vehiculo>
+Arriendo --* Sistemaimpl : - ListaA : List<Arriendo>
+
+
+
+
+
+
+
+@enduml
